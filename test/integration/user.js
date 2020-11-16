@@ -8,6 +8,10 @@ import { DropboxResponse } from '../../src/response.js';
 
 describe('User', () => {
   const dbx = new Dropbox({ accessToken: process.env.DROPBOX_TOKEN });
+  const dbx_app = new Dropbox({
+    accessToken: process.env.DROPBOX_APP_TOKEN,
+    selectUser: process.env.DROPBOX_USER_ID,
+  });
 
   describe('rpc', () => {
     it('rpc request is successful', (done) => {
