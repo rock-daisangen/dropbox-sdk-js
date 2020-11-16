@@ -15,6 +15,15 @@ if (typeof window !== 'undefined') {
   crypto = require('crypto'); // eslint-disable-line global-require
 }
 
+if (global === undefined) {
+  const global = window; // eslint-disable-line
+}
+
+if (typeof global.TextEncoder === 'undefined') {
+  const { TextEncoder } = require('util'); // eslint-disable-line global-require
+  global.TextEncoder = TextEncoder;
+}
+
 // Expiration is 300 seconds but needs to be in milliseconds for Date object
 const TokenExpirationBuffer = 300 * 1000;
 const PKCELength = 128;
